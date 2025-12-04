@@ -27,7 +27,7 @@ install_mtproxy() {
     SECRET=$(generate_secret)
     echo "已生成密钥: $SECRET"
   fi
-
+ 
   echo "安装中..."
   docker run -d \
     --name mtproxy \

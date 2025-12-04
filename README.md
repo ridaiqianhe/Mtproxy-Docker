@@ -7,7 +7,7 @@ Telegram MTProxy 服务器 Docker 部署和管理工具。
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/ridaiqianhe/Mtproxy-Docker/main/mtproxy.sh)
 ```
-
+ 
 ## 功能
 
 - 一键安装 MTProxy
