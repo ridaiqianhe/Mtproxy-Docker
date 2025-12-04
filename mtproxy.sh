@@ -22,7 +22,11 @@ install_mtproxy() {
   read -p "请输入端口 (默认443): " PORT
   PORT=${PORT:-443}
 
-  SECRET=$(generate_secret)
+  read -p "请输入密钥 (留空自动生成): " SECRET
+  if [ -z "$SECRET" ]; then
+    SECRET=$(generate_secret)
+    echo "已生成密钥: $SECRET"
+  fi
 
   echo "安装中..."
   docker run -d \
@@ -32,7 +36,7 @@ install_mtproxy() {
     -e SECRET=$SECRET \
     telegrammessenger/proxy:latest
 
-  SERVER_IP=$(curl -s ifconfig.me || curl -s ip.sb)
+  SERVER_IP=$(curl -4 -s ifconfig.me || curl -4 -s ip.sb || curl -4 -s icanhazip.com)
 
   echo ""
   echo "===== MTProxy 安装完成 ====="
