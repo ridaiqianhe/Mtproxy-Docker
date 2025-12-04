@@ -23,7 +23,7 @@
 ### 1. 下载脚本
 
 ```bash
-wget https://raw.githubusercontent.com/ri dai qian he/Mtproxy-Docker/main/mtproxy.sh
+wget https://raw.githubusercontent.com/ridaiqianhe/Mtproxy-Docker/main/mtproxy.sh
 # 或使用 curl
 curl -O https://raw.githubusercontent.com/ridaiqianhe/Mtproxy-Docker/main/mtproxy.sh
 ```
