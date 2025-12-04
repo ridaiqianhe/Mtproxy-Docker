@@ -4,9 +4,15 @@
 
 set -e
 
-# 生成随机密钥函数
+# 生成随机密钥函数（兼容无 xxd 系统）
 generate_secret() {
-  head -c 16 /dev/urandom | xxd -ps
+  if command -v xxd &> /dev/null; then
+    head -c 16 /dev/urandom | xxd -ps
+  elif command -v hexdump &> /dev/null; then
+    head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+  else
+    head -c 16 /dev/urandom | od -An -tx1 | tr -d ' \n'
+  fi
 }
 
 install_mtproxy() {
